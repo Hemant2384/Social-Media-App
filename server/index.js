@@ -5,6 +5,8 @@ const dbConnection = require('./config/db_config');
 const typeDefs = require('./grapghql/typeDefs') 
 const resolvers = require('./grapghql/resolvers') 
 
+ const PORT = process.env.port || 5000
+
 dbConnection();
 
 const server = new ApolloServer({
@@ -15,8 +17,10 @@ const server = new ApolloServer({
 
 mongoose.connection.once('open', () => {
     console.log('Connected to MongoDB');
-    server.listen().then(({url}) => {
-        console.log(`Started at ${url}`);
+    server.listen().then(({port : PORT}) => {
+        console.log(`Started at ${PORT}`);
+    }).catch(err => {
+        console.log(err);
     })
 });
 

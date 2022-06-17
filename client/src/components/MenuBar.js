@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react'
 import { Menu } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import { AuthContext } from '../context/auth'
+import Notifications from './Notifications'
 
 const MenuBar = () => {
 
@@ -21,9 +22,12 @@ const MenuBar = () => {
       to='/'
     />
     <Menu.Menu position='right'>
+    <Notifications/>
     <Menu.Item
       name='logout'
       onClick={logout}
+      as={Link}
+      to='/'
     />
   </Menu.Menu>
   </Menu>) : (
@@ -35,7 +39,6 @@ const MenuBar = () => {
         as={Link}
         to='/'
       />
-     
       <Menu.Menu position='right'>
       <Menu.Item
         name='login'

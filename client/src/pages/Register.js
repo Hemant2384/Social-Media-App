@@ -31,7 +31,7 @@ const Register = (props) => {
         //triggered if mutation is successfully executed
         update(_,result){
             context.login(result.data.register);
-            navigate('/login')
+            
         },
         onError(err){
             // console.log(err.graphQLErrors[0].extensions.errors)
